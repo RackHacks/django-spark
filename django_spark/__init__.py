@@ -5,11 +5,11 @@ def get_version():
 
 version = get_version()
 
-from fabric.main import main as main_fabric
 import sys
 import os
 
 def main():
+    from fabric.main import main as main_fabric
     file_name = os.path.join(os.path.dirname( __file__ ), 'fabfile.py')
     sys.argv = sys.argv[0:1] + ['-f', file_name] + sys.argv[1:]
     main_fabric()
