@@ -10,6 +10,7 @@ fabric.state.output['running'] = False
 # fabric.state.output['aborts'] = False
 
 # fab project_name:magic,True create_basic_django_project create_gitignore add_gunicorn_to_settings add_django_extensions_to_settings add_django_debug_toolbar_to_settings
+# fab project_name:csv_project,True create_basic_django_project create_gitignore add_gunicorn_to_settings add_django_extensions_to_settings add_django_debug_toolbar_to_settings
 
 
 def project_name(project_name='testing', debug='false'):
@@ -32,7 +33,7 @@ def create_basic_django_project():
     cd {project_name}
     virtualenv --no-site-packages .
     source bin/activate
-    pip install ../Django-1.3.1.tar.gz
+    pip install django==1.3.1
     django-admin.py startproject {project_name}
     cd {project_name}
     chmod 755 manage.py
@@ -114,7 +115,7 @@ def setup_heroku():
 web: bin/python {project_name}/manage.py run_gunicorn -b 0.0.0.0:\$PORT -w 3
 EOF
     cat > requirements.txt <<EOF
-psycopg==2.4.2
+psycopg2==2.4.2
 gunicorn==0.13.4
 -r {project_name}/requirements.txt
 EOF
