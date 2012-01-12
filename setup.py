@@ -12,7 +12,7 @@ def get_packages():
 
     return packages
 
-requires = ['fabric']
+requires = ['fabric==1.2.0']
 
 setup(name='django-spark',
     version=version,
